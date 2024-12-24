@@ -29,6 +29,7 @@ Then the plastic parts were printed out. At this point I mounted all the compone
 Here it is crucial to separate power (220V) and signal (5V) lines as much as possible. They must not be sharing the same Wago. Also they should not touch each other otherwise noise will be introduced, causing all sorts of unwanted effects. 
 
 ![components_inside](https://github.com/user-attachments/assets/08503f9b-df52-4f25-9a49-74ed1ba88a73)
+*Power AC lines on the right side, signal DC lines on the left.* 
 
 When the hardware was ready, I started writing the code. 
 
