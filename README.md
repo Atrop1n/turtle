@@ -13,13 +13,24 @@ The two requirements I was keeping in mind while working on the project were rel
 The control system has two modes: auto and manual. In automatic mode, lamps are automatically being switched based on current time and morning and evening timers.
 The lamps are off early in the morning, active during the day, and off again in the evening.
 
-![image](https://github.com/user-attachments/assets/be389212-3ef2-4d0a-a628-c448ea1ecb3b | width=100)
+<p align="center">
+<img width="" heigth="" src="https://github.com/user-attachments/assets/441d203f-0e2f-411c-a632-d38eacc45752"/>
+<br>
+<i>Automatic mode. Lamp outputs are changed automatically.</i>
+</p>
+
 
 In manual mode, both heating and light outputs are directly controlled by the user.
 
-![image](https://github.com/user-attachments/assets/270e7dd9-0260-40d4-af66-ae4b36ed5d8e)
 
-That's it. This project is pretty simple.
+<p align="center">
+<img width="" heigth="" src="https://github.com/user-attachments/assets/270e7dd9-0260-40d4-af66-ae4b36ed5d8e"/>
+  <br>
+<i>Manual mode. The user is now allowed to control lamps manually.</i>
+</p>
+
+
+That's it. This project is very simple.
 
 ## Hardware
 ```
@@ -31,7 +42,12 @@ That's it. This project is pretty simple.
 some cables and WAGOs
 ```
 The core of the system consists of 2 relays which are controlled by an ESP32 microcontroller. Lamps are connected to the load side of the relays. These components are powered by a 24V power supply and a step-down converter regulating the DC voltage further to 5V. 
-<img width="684" alt="Schema" src="https://github.com/user-attachments/assets/ce4d0d07-bd09-4afa-8480-f0c328e9bfa4" />
+<p align="center">
+<img width="684" alt="Schema" src="https://github.com/user-attachments/assets/ce4d0d07-bd09-4afa-8480-f0c328e9bfa4"/>
+  <br>
+<i>Schematic</i>
+  
+</p>
 You might ask yourself why didn't I use power supply with 5V output, and you're right. I am using 24V power supply and regulating is down to 5 V solely becuase 
 I did not have any 5V power supply available at the time.
 
@@ -40,27 +56,59 @@ First I had to decide the overall size of the housing so that it fits the turtle
 Next I chose appropriate position for every component in the housing and made a screw socket which copied position of every mounting hole
 on the individual components. A general rule of thumb is to place components that are related to each other in close vicinity. 
 I proceeded by adding walls and lid mouting platforms in each corner. I finished the design process by creating the lid itself. 
-
-![image](https://github.com/user-attachments/assets/bf974932-0d91-4acb-861e-61319a380f80)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/bf974932-0d91-4acb-861e-61319a380f80"/>
+<i>Housing design in Fusion 360</i>
+  <br>
+</p>
 
 After the plastic parts were printed out, I mounted all the components to the housing using screws. I also removed the original cable from the lamps and connected the lamps to the relay outputs.  
 When placing cables, it is crucial to separate power (220V) and signal (5V) lines as much as possible. They must not be sharing the same Wago. Also they should not touch each other otherwise noise will be introduced, causing all sorts of unwanted effects. 
 
-![components_inside](https://github.com/user-attachments/assets/08503f9b-df52-4f25-9a49-74ed1ba88a73)
-*Power AC lines on the right side, signal DC lines on the left.* 
+<p align="center">
+<img alt="components_inside" src="https://github.com/user-attachments/assets/08503f9b-df52-4f25-9a49-74ed1ba88a73"/>
+<i>Power AC lines on the right side, signal DC lines on the left</i>
+  <br>
+</p>
+
 
 When the hardware was ready, I started writing the code. 
-![image](https://github.com/user-attachments/assets/6b8ace03-875f-48c7-b32b-992e144bc822)
+<p align="center">
+<img alt="Main loop" src="https://github.com/user-attachments/assets/6b8ace03-875f-48c7-b32b-992e144bc822"/>
+<i>Main loop</i>
+  <br>
+</p>
+
 In the main loop current time is periodically being updated and compared to start and end times of the light and heating.
-<img width="684" alt="diagram_auto" src="https://github.com/user-attachments/assets/dc6fde82-a58e-4dd0-a1df-22432d13fe7f" />
+
+<p align="center">
+<img alt="Program flowchart" src="https://github.com/user-attachments/assets/5992b045-d226-4fc0-b97e-6a32f4ac8eff"/>
+  <br>
+<i>Program flowchart (automatic mode)</i>
+  <br>
+</p>
+
 When in manual mode, bulbs are controlled by webpage switches instead.
-<img width="684" alt="diagram_manual" src="https://github.com/user-attachments/assets/0b6a5466-6e5c-4291-a639-5cceaddfd4eb" />
+
+<p align="center">
+<img alt="Program flowchart" src="https://github.com/user-attachments/assets/da2b7817-c7ef-487f-be1c-4a7661938a2f"/>
+  <br>
+<i>Program flowchart (manual mode)</i>
+  <br>
+</p>
+
 Switch states are being retrieved by http methods.
 Detailed code explanations can be found in the code itself.
 
 After the code was flashed (and all bugs were eliminated) I now had my own lamp controlling system!
-![finished](https://github.com/user-attachments/assets/5df67ec7-a814-4e28-8521-575a39b0e20c)
-*Very happy turtle (can you spot her?)* 
+
+<p align="center">
+<img alt="Program flowchart" src="https://github.com/user-attachments/assets/5df67ec7-a814-4e28-8521-575a39b0e20c"/>
+<i>A very happy turtle. Can you see her?</i>
+  <br>
+</p>
+
+
 
 
                                                                   
