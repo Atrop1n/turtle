@@ -8,10 +8,10 @@ The one I had consisted of two lightbulbs, one for heating, the other for lighti
 
 However I decided to make the switching automated instead of having to manually press the switch every morning and evening. 
 
-The two requirements I was keeping in mind while working on the project were reliability and *user-friendliness*.
+The two requirements I kept in mind while working on the project were *reliability* and *user-friendliness*.
 ## Principle
-The control system has two modes: auto and manual. In automatic mode, lamps are automatically being switched based on current time and morning and evening timers.
-The lamps are off early in the morning, active during the day, and off again in the evening.
+The control interface offers two modes: auto and manual. In automatic mode, lamps are automatically being switched based on current time and morning and evening timers.
+The lamps should be off early in the morning, active during the day, and off again in the evening.
 
 <p align="center">
 <img width="" heigth="" src="https://github.com/user-attachments/assets/441d203f-0e2f-411c-a632-d38eacc45752"/>
@@ -48,11 +48,13 @@ The core of the system consists of 2 relays which are controlled by an ESP32 mic
 <i>Schematic</i>
   
 </p>
-You might ask yourself why didn't I use power supply with 5V output, and you're right. I am using 24V power supply and regulating is down to 5 V solely becuase 
+You might be asking why didn't I use power supply with 5V output, and you're right. I am using 24V power supply and regulating is down to  5 V solely becuase 
 I did not have any 5V power supply available at the time.
+<br>
 
-The project required a custom-made housing which I designed and printed.  
-First I had to decide the overall size of the housing so that it fits the turtle tank and contains all the components.
+## Housing
+The project required a custom-made housing which I designed and printed. It is basically a plastic box that hides all the components inside.
+First I had to decide the overall size of the housing so that it fits the turtle tank.
 Next I chose appropriate position for every component in the housing and made a screw socket which copied position of every mounting hole
 on the individual components. A general rule of thumb is to place components that are related to each other in close vicinity. 
 I proceeded by adding walls and lid mouting platforms in each corner. I finished the design process by creating the lid itself. 
@@ -79,7 +81,7 @@ When the hardware was ready, I started writing the code.
   <br>
 </p>
 
-In the main loop current time is periodically being updated and compared to start and end times of the light and heating.
+In the main loop, time is being updated and compared to start and end times of the light and heating.
 
 <p align="center">
 <img alt="Program flowchart" src="https://github.com/user-attachments/assets/5992b045-d226-4fc0-b97e-6a32f4ac8eff"/>
@@ -88,7 +90,7 @@ In the main loop current time is periodically being updated and compared to star
   <br>
 </p>
 
-When in manual mode, bulbs are controlled by webpage switches instead.
+When the manual mode is turned on, bulbs are controlled by webpage switches instead.
 
 <p align="center">
 <img alt="Program flowchart" src="https://github.com/user-attachments/assets/da2b7817-c7ef-487f-be1c-4a7661938a2f"/>
