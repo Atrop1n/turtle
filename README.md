@@ -6,8 +6,16 @@ This is an automated light and heating control for a turtle tank.
 Turles living indoors usually require some sort of artificial lighting and heating. There is a variety of suitable devices on the market.
 The one I had consisted of two lightbulbs, one for heating, the other for lighting. Each had dedicated manual switch. 
 I have decided to make the switching automated, instead of having to manually press the switch every morning and evening.
+## Principle
+The control system has two modes: auto and manual. In automatic mode, lamps are automatically being switched based on current time and morning and evening timers.
+The lamps are off early in the morning, active during the day, and off again in the evening.
+![image](https://github.com/user-attachments/assets/be389212-3ef2-4d0a-a628-c448ea1ecb3b)
+In manual mode, both heating and light outputs are directly controlled by the user.
+![image](https://github.com/user-attachments/assets/270e7dd9-0260-40d4-af66-ae4b36ed5d8e)
 
-## Hardware requirements
+That's it. This project is pretty simple.
+
+## Hardware
 ```
 1x DOIT DevKit V1 ESP32
 2x relay
@@ -16,6 +24,11 @@ I have decided to make the switching automated, instead of having to manually pr
 3D printer
 some cables and WAGOs
 ```
+There are 2 relays controlled by a ESP32 microcontroller. Relay loads are the lamps. Besides that, there is also a 24 V power supply and a step-down converter regulating the DC voltage further to 5V. 
+<img width="684" alt="Schema" src="https://github.com/user-attachments/assets/ce4d0d07-bd09-4afa-8480-f0c328e9bfa4" />
+You might ask yourself why didn't I use power supply with 5V output, and you're right. I am using 24V power supply and regulating is down to 5 V solely becuase 
+I did not have any 5V power supply available at the time.
+
 I started out by designing the housing which I later printed. The design was done in Fusion 360.  
 
 First I had to decide the overall size of the housing so that it fits the turtle tank and contains all the components.
@@ -32,6 +45,9 @@ Here it is crucial to separate power (220V) and signal (5V) lines as much as pos
 *Power AC lines on the right side, signal DC lines on the left.* 
 
 When the hardware was ready, I started writing the code. 
+![image](https://github.com/user-attachments/assets/6b8ace03-875f-48c7-b32b-992e144bc822)
+The main loop is pretty simple where current time is periodically being updated and compared to start and end times of the light and heating.
+
 
 
                                                                   
