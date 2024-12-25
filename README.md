@@ -1,4 +1,4 @@
-# light_bulb_control
+# turtle
 ## Control two lightbulbs via a web interface!
 
 This is an automated light and heating control for a turtle tank.
